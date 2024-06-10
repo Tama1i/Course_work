@@ -1,0 +1,38 @@
+<app-search></app-search>
+<app-tags></app-tags>
+<app-not-found
+[visible]="!appliances || !appliances.length"
+resetLinkText="Reset Search">
+</app-not-found>
+<ul>
+  <li *ngFor="let appliances of appliances">
+    <a routerLink="/appliances/{{appliances.id}}">
+      <img [src]="appliances.imageUrl" [alt]="appliances.name" />
+      <div class="content">
+        <div class="name">
+          {{appliances.name}}
+        </div>
+        <span class="favorite {{appliances.favorite?'':'not'}}">
+          ❤
+        </span>
+        <div class="stars">
+          <star-rating [stars]="appliances.stars" />
+        </div>
+        <div class="product-item-footer">
+          <div class="origins">
+            <span *ngFor="let origin of appliances.origins">
+              {{origin}}
+            </span>
+          </div>
+
+        </div>
+
+        <div class="price">
+          <span>
+            {{appliances.price | currency}}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>

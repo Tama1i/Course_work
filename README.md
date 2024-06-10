@@ -1,1 +1,4 @@
-# Course_work
+backend/
+frontend/
+package-lock.json
+package.json

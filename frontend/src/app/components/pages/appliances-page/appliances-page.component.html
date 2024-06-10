@@ -1,0 +1,42 @@
+<app-not-found
+  [visible]="!appliances"
+  notAppliancesMessage="Appliances Not Found"
+  resetLinkText="Back To Homepage">
+</app-not-found>
+<div *ngIf="appliances" class="container">
+  <img [src]="appliances.imageUrl" [alt]="appliances.name"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{appliances.name}}
+      </span>
+      <span class="favorite {{appliances.favorite? '': 'not'}}">❤</span>
+    </div>
+    <div class="rating">
+      <star-rating [stars]="appliances.stars" [size]="1.8" />
+    </div>
+
+    <div class="origins">
+      <span *ngFor="let origin of appliances.origins">
+        {{origin}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of appliances.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+
+    <div class="price">
+      <span>
+        {{appliances.price | currency}}
+      </span>
+    </div>
+
+    <button (click)="addToCart()">Add To Cart</button>
+
+  </div>
+</div>
